@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
-const CHECKOUT_URL = "https://nexiotools.lemonsqueezy.com/checkout/buy/contract2check-placeholder";
+const CHECKOUT_URL = "https://nexiotools.lemonsqueezy.com/checkout/buy/810771d8-f28e-4eb6-9624-d6e8f6a6e46f";
 const FREE_LIMIT = 1;
 const STORAGE_KEY = "contract2check_uses";
 const WHITELIST_KEY = "contract2check_whitelisted";
