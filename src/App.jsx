@@ -173,12 +173,12 @@ function PaywallModal({ onClose, onWhitelisted, t }) {
         <button onClick={onClose} style={{ position: "absolute", top: 16, right: 16, background: "transparent", border: "none", color: "rgba(255,255,255,0.3)", fontSize: 18, cursor: "pointer" }}>✕</button>
 
         {/* Logo mark */}
-        <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(255,79,79,0.1)", border: "1px solid rgba(255,79,79,0.2)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+        <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.2)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
           <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
             <rect width="32" height="32" rx="7" fill="#0f0f12"/>
             <rect x="6" y="6" width="5" height="20" rx="1.4" fill="white"/>
             <rect x="21" y="6" width="5" height="20" rx="1.4" fill="white"/>
-            <polygon points="11,6 16,6 26,26 21,26" fill="#ff4f4f"/>
+            <polygon points="11,6 16,6 26,26 21,26" fill="#22c55e"/>
           </svg>
         </div>
 
@@ -189,7 +189,7 @@ function PaywallModal({ onClose, onWhitelisted, t }) {
         <div style={{ marginBottom: 24 }}>
           {t.features.map((f, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-              <div style={{ width: 18, height: 18, borderRadius: 5, background: "#ff4f4f", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <div style={{ width: 18, height: 18, borderRadius: 5, background: "#22c55e", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <span style={{ fontSize: 10, color: "white", fontWeight: 700 }}>✓</span>
               </div>
               <span style={{ fontSize: 13, color: "rgba(240,236,232,0.8)" }}>{f}</span>
@@ -203,13 +203,13 @@ function PaywallModal({ onClose, onWhitelisted, t }) {
           { label: "Pro", period: t.lang === "NL" ? "1 jaar" : "1 year", price: "€39", popular: true },
           { label: "Lifetime", period: t.lang === "NL" ? "Voor altijd" : "Forever", price: "€79" },
         ].map((tier) => (
-          <a key={tier.label} href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: tier.popular ? "#1a1a1a" : "rgba(255,255,255,0.03)", border: `1px solid ${tier.popular ? "#ff4f4f" : "rgba(255,255,255,0.08)"}`, borderRadius: 12, padding: "14px 16px", marginBottom: 8, textDecoration: "none", cursor: "pointer", position: "relative" }}>
-            {tier.popular && <div style={{ position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)", background: "#ff4f4f", color: "white", fontSize: 9, fontWeight: 700, padding: "3px 10px", borderRadius: 100, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>{t.lang === "NL" ? "MEEST GEKOZEN" : "MOST POPULAR"}</div>}
+          <a key={tier.label} href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: tier.popular ? "#1a1a1a" : "rgba(255,255,255,0.03)", border: `1px solid ${tier.popular ? "#22c55e" : "rgba(255,255,255,0.08)"}`, borderRadius: 12, padding: "14px 16px", marginBottom: 8, textDecoration: "none", cursor: "pointer", position: "relative" }}>
+            {tier.popular && <div style={{ position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)", background: "#22c55e", color: "white", fontSize: 9, fontWeight: 700, padding: "3px 10px", borderRadius: 100, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>{t.lang === "NL" ? "MEEST GEKOZEN" : "MOST POPULAR"}</div>}
             <div>
               <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 14, fontWeight: 700, color: "#f0ece8" }}>{tier.label}</div>
               <div style={{ fontSize: 11, color: "rgba(240,236,232,0.4)", marginTop: 2 }}>{tier.period}</div>
             </div>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: tier.popular ? "#ff4f4f" : "#f0ece8" }}>{tier.price}</div>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 800, color: tier.popular ? "#22c55e" : "#f0ece8" }}>{tier.price}</div>
           </a>
         ))}
 
@@ -229,7 +229,7 @@ function PaywallModal({ onClose, onWhitelisted, t }) {
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} onKeyDown={e => e.key === "Enter" && handleValidateEmail()} placeholder={t.emailPlaceholder}
                   style={{ flex: 1, background: "rgba(255,255,255,0.05)", border: `1px solid ${emailStatus === "error" || emailStatus === "expired" ? "rgba(255,80,80,0.4)" : emailStatus === "success" ? "rgba(80,200,120,0.4)" : "rgba(255,255,255,0.1)"}`, borderRadius: 8, padding: "10px 14px", color: "#f0ece8", fontFamily: "'DM Sans', sans-serif", fontSize: 13, outline: "none" }} />
                 <button onClick={handleValidateEmail} disabled={emailStatus === "checking" || emailStatus === "success"}
-                  style={{ background: emailStatus === "success" ? "rgba(80,200,120,0.2)" : "rgba(255,79,79,0.15)", border: `1px solid ${emailStatus === "success" ? "rgba(80,200,120,0.3)" : "rgba(255,79,79,0.3)"}`, color: emailStatus === "success" ? "#50c878" : "#ff4f4f", borderRadius: 8, padding: "10px 16px", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600 }}>
+                  style={{ background: emailStatus === "success" ? "rgba(80,200,120,0.2)" : "rgba(34,197,94,0.15)", border: `1px solid ${emailStatus === "success" ? "rgba(80,200,120,0.3)" : "rgba(34,197,94,0.3)"}`, color: emailStatus === "success" ? "#50c878" : "#22c55e", borderRadius: 8, padding: "10px 16px", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600 }}>
                   {emailStatus === "checking" ? t.checking : emailStatus === "success" ? t.unlocked : t.unlockBtn}
                 </button>
               </div>
@@ -251,7 +251,7 @@ function PaywallModal({ onClose, onWhitelisted, t }) {
               <input type="text" value={code} onChange={e => setCode(e.target.value)} onKeyDown={e => e.key === "Enter" && handleValidateCode()} placeholder={t.lang === "NL" ? "Toegangscode" : "Access code"}
                 style={{ flex: 1, background: "rgba(255,255,255,0.05)", border: `1px solid ${codeStatus === "error" ? "rgba(255,80,80,0.4)" : codeStatus === "success" ? "rgba(80,200,120,0.4)" : "rgba(255,255,255,0.1)"}`, borderRadius: 8, padding: "10px 14px", color: "#f0ece8", fontFamily: "'DM Sans', sans-serif", fontSize: 13, outline: "none" }} />
               <button onClick={handleValidateCode} disabled={codeStatus === "checking" || codeStatus === "success"}
-                style={{ background: codeStatus === "success" ? "rgba(80,200,120,0.2)" : "rgba(255,79,79,0.15)", border: `1px solid ${codeStatus === "success" ? "rgba(80,200,120,0.3)" : "rgba(255,79,79,0.3)"}`, color: codeStatus === "success" ? "#50c878" : "#ff4f4f", borderRadius: 8, padding: "10px 16px", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600 }}>
+                style={{ background: codeStatus === "success" ? "rgba(80,200,120,0.2)" : "rgba(34,197,94,0.15)", border: `1px solid ${codeStatus === "success" ? "rgba(80,200,120,0.3)" : "rgba(34,197,94,0.3)"}`, color: codeStatus === "success" ? "#50c878" : "#22c55e", borderRadius: 8, padding: "10px 16px", cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600 }}>
                 {codeStatus === "checking" ? t.checking : codeStatus === "success" ? t.unlocked : t.lang === "NL" ? "Toepassen" : "Apply"}
               </button>
             </div>
@@ -269,7 +269,7 @@ function RiskBadge({ level, t }) {
   const colors = {
     low:    { bg: "rgba(80,200,120,0.1)",  border: "rgba(80,200,120,0.25)",  text: "#50c878" },
     medium: { bg: "rgba(255,200,80,0.1)",  border: "rgba(255,200,80,0.25)",  text: "#ffc850" },
-    high:   { bg: "rgba(255,79,79,0.1)",   border: "rgba(255,79,79,0.25)",   text: "#ff4f4f" },
+    high:   { bg: "rgba(34,197,94,0.1)",   border: "rgba(255,79,79,0.25)",   text: "#ff4f4f" },
   };
   const c = colors[level] || colors.low;
   return (
@@ -283,7 +283,7 @@ function RiskBadge({ level, t }) {
 function ScoreRing({ score }) {
   const r = 36, circ = 2 * Math.PI * r;
   const dash = (score / 100) * circ;
-  const color = score >= 70 ? "#50c878" : score >= 40 ? "#ffc850" : "#ff4f4f";
+  const color = score >= 70 ? "#50c878" : score >= 40 ? "#ffc850" : "#22c55e";
   return (
     <div style={{ position: "relative", width: 96, height: 96, flexShrink: 0 }}>
       <svg width="96" height="96" style={{ transform: "rotate(-90deg)" }}>
@@ -457,30 +457,30 @@ export default function App() {
         .header { padding: 36px 0 32px; display: flex; align-items: center; justify-content: space-between; }
         .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo-text { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: #f0ece8; letter-spacing: -0.3px; }
-        .logo-text span { color: #ff4f4f; }
+        .logo-text span { color: #22c55e; }
         .header-right { display: flex; align-items: center; gap: 12px; }
         .lang-seg { display: flex; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
         .lang-btn { padding: 5px 12px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; cursor: pointer; border: none; background: transparent; color: rgba(240,236,232,0.45); transition: all 0.18s; }
-        .lang-btn.active { background: #ff4f4f; color: white; }
+        .lang-btn.active { background: #22c55e; color: white; }
         .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(80,200,120,0.1); border: 1px solid rgba(80,200,120,0.2); color: #50c878; font-size: 11px; padding: 5px 12px; border-radius: 20px; }
         .hero { padding: 48px 0 40px; }
         h1 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 16px; }
-        h1 em { font-style: normal; color: #ff4f4f; }
+        h1 em { font-style: normal; color: #22c55e; }
         .subtitle { font-size: 16px; font-weight: 300; color: rgba(240,236,232,0.55); line-height: 1.7; max-width: 560px; }
         .upload-area { border: 1.5px dashed rgba(255,255,255,0.12); border-radius: 16px; padding: 40px; text-align: center; cursor: pointer; transition: all 0.2s; margin: 32px 0 0; background: rgba(255,255,255,0.02); }
-        .upload-area:hover, .upload-area.drag { border-color: #ff4f4f; background: rgba(255,79,79,0.04); }
+        .upload-area:hover, .upload-area.drag { border-color: #22c55e; background: rgba(34,197,94,0.04); }
         .upload-area.has-file { border-color: rgba(80,200,120,0.4); background: rgba(80,200,120,0.04); }
         .upload-icon { font-size: 32px; margin-bottom: 12px; }
         .upload-label { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #f0ece8; margin-bottom: 6px; }
         .upload-sub { font-size: 12px; color: rgba(240,236,232,0.35); }
         .upload-file-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: #50c878; margin-top: 8px; }
-        .analyse-btn { width: 100%; background: #ff4f4f; color: white; border: none; border-radius: 12px; padding: 16px; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 16px; transition: opacity 0.2s, transform 0.2s; letter-spacing: -0.3px; }
+        .analyse-btn { width: 100%; background: #22c55e; color: white; border: none; border-radius: 12px; padding: 16px; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 16px; transition: opacity 0.2s, transform 0.2s; letter-spacing: -0.3px; }
         .analyse-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
         .analyse-btn:disabled { opacity: 0.4; cursor: not-allowed; }
         .privacy-note { text-align: center; font-size: 11px; color: rgba(240,236,232,0.25); margin-top: 10px; }
         .free-counter { display: flex; justify-content: center; margin-top: 8px; }
-        .free-pill { background: rgba(255,79,79,0.08); border: 1px solid rgba(255,79,79,0.15); color: rgba(255,79,79,0.7); font-size: 11px; padding: 4px 12px; border-radius: 100px; }
-        .error { background: rgba(255,79,79,0.08); border: 1px solid rgba(255,79,79,0.2); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #ff8080; margin-top: 12px; }
+        .free-pill { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.15); color: rgba(255,79,79,0.7); font-size: 11px; padding: 4px 12px; border-radius: 100px; }
+        .error { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #ff8080; margin-top: 12px; }
         /* Result */
         .result-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 28px; margin-top: 32px; animation: up 0.5s ease both; }
         .overall-row { display: flex; align-items: center; gap: 24px; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -499,7 +499,7 @@ export default function App() {
         .clause-section { margin-bottom: 10px; }
         .clause-section-label { font-size: 10px; font-weight: 600; color: rgba(240,236,232,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
         .clause-section-text { font-size: 13px; font-weight: 300; color: rgba(240,236,232,0.7); line-height: 1.65; }
-        .clause-law { font-size: 11px; color: #ff4f4f; margin-top: 8px; }
+        .clause-law { font-size: 11px; color: #22c55e; margin-top: 8px; }
         /* Flagged */
         .flagged-item { display: flex; gap: 12px; background: rgba(255,79,79,0.05); border: 1px solid rgba(255,79,79,0.15); border-radius: 12px; padding: 16px; margin-bottom: 10px; }
         .flagged-icon { width: 28px; height: 28px; background: rgba(255,79,79,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
@@ -535,7 +535,7 @@ export default function App() {
               <rect width="32" height="32" rx="7" fill="#0f0f12"/>
               <rect x="6" y="6" width="5" height="20" rx="1.4" fill="white"/>
               <rect x="21" y="6" width="5" height="20" rx="1.4" fill="white"/>
-              <polygon points="11,6 16,6 26,26 21,26" fill="#ff4f4f"/>
+              <polygon points="11,6 16,6 26,26 21,26" fill="#22c55e"/>
             </svg>
             <span className="logo-text">Contract<span>2</span>Check</span>
           </div>
