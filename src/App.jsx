@@ -621,7 +621,7 @@ export default function App() {
               <rect x="21" y="6" width="5" height="20" rx="1.4" fill="white"/>
               <polygon points="11,6 16,6 26,26 21,26" fill="#22c55e"/>
             </svg>
-            <span className="logo-text">Contract<span>2</span>Check</span>
+            <span className="logo-text">Contract<span>Clarity</span></span>
           </div>
           <div className="header-right">
             {isWhitelisted && (
